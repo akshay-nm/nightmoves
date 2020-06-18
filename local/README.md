@@ -1,3 +1,14 @@
+# Nightmoves local
+
+This project is designed to cater 2 things:
+- An overlay which is always in sync with a server 
+- A server which is always in sync with other sources on user interactions (youtube, paytm)
+- A settings panel to modify the overlay and server features
+
+The settings pane is concerned about the the position, size of elements in the overlay. I also plan on adding elements which interact with commands in the text.
+
+## Nextjs generated docs
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
