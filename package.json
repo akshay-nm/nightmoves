@@ -1,0 +1,12 @@
+{
+  "name": "nightmoves",
+  "version": "1.0.0",
+  "repository": "git@github.com:mundane140/nightmoves.git",
+  "author": "Akshay Kumar <akshay.kumar@sdiot.io>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "local",
+    "website"
+  ]
+}
