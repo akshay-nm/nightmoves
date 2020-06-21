@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -10,52 +11,48 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a 
+          href="https://nightmoves.gg"
+          target="_blank"
+          rel="noopener noreferrer">Nightmoves</a> Stream Control Room!
         </h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          You can monitor and control the behavior of overlay from here.
         </p>
 
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Link href='/overlay'>
+            <a className="card">
+              <h3>Overlay &rarr;</h3>
+              <p>Live overlay to be used in OBS.</p>
+            </a>
+          </Link>
+          
+          <Link href='/settings'>
+            <a className="card">
+              <h3>Settings &rarr;</h3>
+              <p>Configure the overlay with the help of a demo.</p>
+            </a>
+          </Link>
+          
+          <Link href='/stats'>
+            <a className="card">
+              <h3>Stats &rarr;</h3>
+              <p>Stats related to stream and overlay.</p>
+            </a>
+          </Link>
         </div>
       </main>
 
       <footer>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://nightmoves.gg"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+          Created by{' '}
+          <img src="/vercel.svg" alt="Nightmoves Logo" className="logo" />
         </a>
       </footer>
 
