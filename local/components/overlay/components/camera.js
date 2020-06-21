@@ -29,7 +29,8 @@ const Camera = ({stream}) => {
     <video 
       ref={cameraRef} 
       className='position-absolute rounded shadow' 
-      style={{ height: `${size}%`, left: `${x}%`, top:`${y}%`, zIndex: 5 }} />
+      style={{ height: `${size}%`, left: `${x}%`, top:`${y}%`, zIndex: 5 }}
+      autoPlay />
   );
 };
 
