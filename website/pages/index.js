@@ -1,63 +1,34 @@
 import Head from 'next/head'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faYoutube, faTwitch, faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
 
 export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>NightMoves</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div class="logo-container">
+          <img class="logo" src="/nm.png" alt="NightMoves Logo" />
+        </div>
+        <div class="details">
+          <h2 class="container">Hey there!</h2>
+          <br/>
+          <p class="container">Gamer from <span class="flag-icon flag-icon-in"></span> <br/> Don't forget to checkout the links below!!!  <br/> Thanks!</p>
+        </div> 
+        <div class="social">
+          <ul class="social-icons" style={{ listStyle: 'none' }}>
+            <li><a href="https://www.youtube.com/channel/UCgQDm-CbAddx6G-riaUR0cA" id="youtube" title="Link to youtube" class="social-icon" target="_blank" rel="noopener" > <FontAwesomeIcon icon={faYoutube}/> </a></li>
+            <li><a href="https://www.twitch.tv/nightmoves" id="twitch" title="Link to twitch" class="social-icon" rel="noopener" target="_blank" > <FontAwesomeIcon icon={faTwitch}/> </a></li>
+            <li><a href="https://www.instagram.com/ak.nightmoves" id="instagram" title="Link to instagram" class="social-icon" rel="noopener" target="_blank" > <FontAwesomeIcon icon={faInstagram}/> </a></li>
+            <li><a href="https://www.facebook.com/ak.nightmoves/" id="facebook" title="Link to facebook" class="social-icon" rel="noopener" target="_blank" > <FontAwesomeIcon icon={faFacebook}/> </a></li>
+            <li><a href="https://twitter.com/ak_nightmoves" id="twitter" title="Link to twitter" class="social-icon" rel="noopener" target="_blank" > <FontAwesomeIcon icon={faTwitter}/> </a></li>
+          </ul>
         </div>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
 
       <style jsx>{`
         .container {
