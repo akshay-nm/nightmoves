@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useSpring, animated } from 'react-spring';
 
 const SocialMediaLink = ({ icon, profileLink }) => {
-  const [props, set, stop] = useSpring(() => ({ position: 'absolute', padding: '2rem', opacity: 0, fontSize: 30 }))
+  const [props, set, stop] = useSpring(() => ({ padding: '2rem', opacity: 0, fontSize: 30 }))
   const [hover, setHover] = useState(false)
 
   useEffect(() => {

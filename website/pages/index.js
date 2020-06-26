@@ -11,28 +11,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <main className="flex flex-col justify-around h-full">
-        <div className="flex items-center">
+      <main className="flex flex-col h-full">
+        <div className="flex-1 items-center">
           <div className="flex-1"></div>
           <div className="flex-1">
             <img src="/nm.png" alt="NightMoves Logo" />
           </div>
           <div className="flex-1"></div>
         </div>
-        <div className="flex items-center justify-center">
-          <div className="flex-1 text-center">
+        <div className="flex-1 flex items-center justify-center">
+          <div className="flex-1 h-full flex items-center">
             <SocialMediaLink profileLink="https://www.youtube.com/channel/UCgQDm-CbAddx6G-riaUR0cA" icon={faYoutube} />
           </div>
-          <div className="flex-1 text-center">
+          <div className="flex-1 h-full flex items-center">
             <SocialMediaLink profileLink="https://www.twitch.tv/nightmoves" icon={faTwitch} />
           </div>
-          <div className="flex-1 text-center">
+          <div className="flex-1 h-full flex items-center">
             <SocialMediaLink profileLink="https://www.instagram.com/ak.nightmoves" icon={faInstagram} />
           </div>
-          <div className="flex-1 text-center">
+          <div className="flex-1 h-full flex items-center">
             <SocialMediaLink profileLink="https://www.facebook.com/ak.nightmoves/" icon={faFacebook} />
           </div>
-          <div className="flex-1 text-center">
+          <div className="flex-1 h-full flex items-center">
             <SocialMediaLink profileLink="https://twitter.com/ak_nightmoves" icon={faTwitter} />
           </div>
         </div>
