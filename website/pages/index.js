@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       
       <main className="flex flex-col h-full">
-        <div className="flex-1 items-center">
+        <div className="flex-1 flex items-center">
           <div className="flex-1"></div>
           <div className="flex-1">
             <img src="/nm.png" alt="NightMoves Logo" />
