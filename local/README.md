@@ -1,3 +1,23 @@
+# local
+
+## directory structure
+
+.data
+- profiles
+  - profile1
+    - screens
+      - screen1
+        - component.json
+      - scrren2
+        - component.json
+  - profile2
+    - screens
+      - screen1
+        - component.json
+      - scrren2
+        - component.json
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

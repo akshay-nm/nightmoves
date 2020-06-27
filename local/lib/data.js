@@ -96,4 +96,50 @@ lib.getAllFileName = (dir) => {
   })
 }
 
+lib.createDirIfDoesNotExist = dir => {
+  return new Promise((resolve, reject) => {
+    fs.exists(path.join(lib.baseDir, dir), dirExists => {
+      if(!dirExists) {
+        fs.mkdir(path.join(lib.baseDir, dir), (err) => {
+          if(!err) resolve()
+          else {
+            console.log(err)
+            reject('Error trying to create directory: ', dir)
+          }
+        })
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
+lib.getDirectories = dir => {
+  return new Promise((resolve, reject) => {
+    readdir(path.join(lib.baseDir, dir), { withFileTypes: true },(err, files) => {
+      if(!err && files) {
+        let directories = files.filter(dirent => dirent.isDirectory())
+          .map(dirent => dirent.name)
+        resolve(directories)
+      } else {
+        console.log(err)
+        reject('Error getting list of directories')
+      }
+    })
+  })
+}
+
+lib.removeDirectory = dir => {
+  return new Promise((resolve, reject) => {
+    fs.rmdir(path.join(lib.baseDir, dir), { recursive: true }, err => {
+      if(!err) resolve()
+      else {
+        console.log(err)
+        reject('Error trying to remove dir: ', err)
+      }
+    });
+  })
+  
+}
+
 module.exports = lib
