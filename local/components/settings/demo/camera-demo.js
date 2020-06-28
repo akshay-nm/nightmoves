@@ -13,7 +13,7 @@ const CameraDemo = ({ size, x, y }) => {
   })
   return (
     <div 
-      className='border rounded position-absolute' 
+      className='border rounded absolute' 
       ref={cameraRef}
       style={{ height: `${size}%`, width, left: `${x}%`, top: `${y}%` }} >
       <OverlayTrigger
@@ -24,7 +24,7 @@ const CameraDemo = ({ size, x, y }) => {
           </Tooltip>
         }
       >
-        <div className='w-100 h-100'></div>
+        <div className='w-full h-full'></div>
       </OverlayTrigger>
     </div>
   );
