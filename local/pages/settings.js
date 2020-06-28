@@ -73,14 +73,14 @@ const Settings = () => {
   }
 
   return (
-    <div>
-      <div>
-        <button className='btn btn-primary mr-1 mb-1' onClick={onSync} >Sync</button>
-        <button className='btn btn-warning mr-1 mb-1' onClick={onUpdate} >Update</button>
+    <div className='container'>
+      <div className='flex flex-wrap m-2'>
+        <button className='bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2' onClick={onSync} >Sync</button>
+        <button className='bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2' onClick={onUpdate} >Update</button>
       </div>
-      <div className='row w-100'>
-        <div className='col'>
-          <strong>Settings</strong>
+      <div className='flex flex-wrap mx-2 mb-2'>
+        <div className='sm:w-full md:w-1/2 p-2'>
+          <p className='text-3xl'>Settings</p>
           <OverlaySettings 
             width={overlayWidth} 
             height={overlayHeight} 
@@ -96,8 +96,8 @@ const Settings = () => {
             onXChange={setCameraX} 
             onYChange={setCameraY} />
         </div>
-        <div className='col'>
-          <strong>Ouput</strong>
+        <div className='sm:w-full md:w-1/2'>
+          <p className='text-3xl' >Ouput</p>
           <Output 
             overlayWidth={overlayWidth} 
             overlayHeight={overlayHeight}
