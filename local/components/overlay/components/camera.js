@@ -28,7 +28,7 @@ const Camera = ({stream}) => {
   return (
     <video 
       ref={cameraRef} 
-      className='position-absolute rounded shadow' 
+      className='absolute rounded shadow' 
       style={{ height: `${size}%`, left: `${x}%`, top:`${y}%`, zIndex: 5 }}
       autoPlay />
   );
