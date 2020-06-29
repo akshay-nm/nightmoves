@@ -1,67 +1,67 @@
 const router = require('express').Router()
-let components = require('../lib/data').components
+let shows = require('../lib/data').shows
 
-// body:info(unique)
+// body:name(unique)
 // query: -
 // params: -
 // headers: 'Content-Type': 'application/json'
 // return: doc
 router.post('/', (req, res) => {
-  console.log('------COMPONENTS:POST------')
+  console.log('------SHOWS:POST------')
   let info = req.body.info
   if(info)
-    components.find({ info: { name: info.name } }, (err, docs) => {
+    shows.find({ info: { name: info.name } }, (err, docs) => {
       if(!err && doc) {
         if(docs.length === 0) {
-          components.insert({
-            info,
-            components: []
+          shows.insert({
+            name,
+            screens: []
           }, (error, newDoc) => {
             if(!error && newDoc) {
               res.json(newDoc)
             } else {
-              console.log('Error trying to add the component:', error)
+              console.log('Error trying to add the show:', error)
               res.sendStatus(500)
             }
           })
         } else {
-          console.log('Error trying to add the component: The component already exists.')
+          console.log('Error trying to add the show: The show already exists.')
           res.sendStatus(400)
         }
       } else {
-        console.log('Error trying to find the component by info during post:', err)
+        console.log('Error trying to find the show by name during post:', err)
         res.sendStatus(500)
       }
     })
   else {
-    console.log('Missing or invalid parameters while creating component.')
+    console.log('Missing or invalid parameters while creating show.')
     res.sendStatus(400)
   }
 })
 
 // body: -
 // query: -
-// params: componentId
+// params: showId
 // headers: 'Content-Type': 'application/json'
-// return: doc
-router.get('/:componentId', (req, res) => {
-  console.log('------COMPONENTS:GET------')
-  if(req.params.componentId.length === 16) {
-    components.findOne({ _id: req.params.componentId }, (error, doc) => {
+// return doc
+router.get('/:showId', (req, res) => {
+  console.log('------SHOWS:GET------')
+  if(req.params.showId.length === 16) {
+    shows.findOne({ _id: req.params.showId }, (error, doc) => {
       if(!error) {
         if(doc) res.json(doc)
         else res.sendStatus(404)
       } else {
-        console.log('Error trying to get component by ID: ', error)
+        console.log('Error trying to get show by ID: ', error)
         res.sendStatus(500)
       }
     })
   } else {
-    components.find({}, (error, docs) => {
+    shows.find({}, (error, docs) => {
       if(!error && docs) {
         res.json(docs)
       } else {
-        console.log('Error trying to get all components: ', error)
+        console.log('Error trying to get all shows: ', error)
         res.sendStatus(500)
       }
     })
@@ -69,45 +69,45 @@ router.get('/:componentId', (req, res) => {
   res.sendStatus(200)
 })
 
-// body: _id, info
+// body: _id, name
 // query: -
 // params: -
 // headers: 'Content-Type': 'application/json'
 // return: -
 
 router.put('/', (req, res) => {
-  console.log('------COMPONENTS:PUT------')
+  console.log('------SHOWS:PUT------')
   let _id = typeof req.body._id === 'string' && req.body._id.length === 16 ? req.body._id : false
   let info = req.body.info
 
   if(_id && info) {
-    components.update({ _id }, { $set: { info } }, {},(error, numReplaced) => {
+    shows.update({ _id }, { $set: { info } }, {},(error, numReplaced) => {
       if(!error) {
         res.sendStatus(200)
       } else {
-        console.log('Error trying to update component: ', error)
+        console.log('Error trying to update show: ', error)
         res.sendStatus(500)
       }
     })
   } else {
-    console.log('Missing or invalid arguments while editing component.')
+    console.log('Missing or invalid arguments while editing show.')
     res.sendStatus(400)
   }
   res.sendStatus(200)
 })
 
-// body: 
+// body: -
 // query: -
-// params: componentId
+// params: showId
 // headers: 'Content-Type': 'application/json'
-// return: -
-router.delete('/:componentId', (req, res) => {
-  console.log('------COMPONENTS:DELETE------')
-  if(req.params.componentId === 16) {
-    components.remove({ _id }, {}, (error, numRemoved) => {
+// return: doc
+router.delete('/:showId', (req, res) => {
+  console.log('------SHOWS:DELETE------')
+  if(req.params.showId === 16) {
+    shows.remove({ _id }, {}, (error, numRemoved) => {
       if(!error) res.sendStatus(numRemoved? 200: 404)
       else {
-        console.log('Error trying to remove component: ', error)
+        console.log('Error trying to remove show: ', error)
         res.sendStatus(500)
       }
     })
