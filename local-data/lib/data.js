@@ -1,9 +1,10 @@
 const path = require('path')
+const fs = require('fs')
 const Datastore = require('nedb')
 
 let lib = {}
 
-lib.baseDir = path.join(__dirname, '../.data/')
+lib.baseDir = path.join(__dirname, '../.data')
 
 const defaultData = {
   profiles: [
@@ -38,9 +39,21 @@ const loadComponents = new Promise((resolve, reject) => {
   })
 })
 
-// This will make the data accessible to routes. 
+// Datastore initialization
 lib.init = () => {
-  return Promise.all([loadComponents, loadShows, loadScreens])
+  // check if the .data directory exists
+  return new Promise((resolve, reject) => {
+    fs.stat(lib.baseDir, (error, stats) => {
+      if(!error)
+        if(!stats.isDirectory()) {
+          fs.mkdir(lib.baseDir, (err) => {
+            if(!err) resolve()
+            else reject('Could not create the data directory.')
+          })
+        } else resolve()
+      else reject('Error trying to get data directory stats: ', error)
+    })
+  }).then(() => Promise.all([loadComponents, loadShows, loadScreens]))
 }
 
 module.exports = lib
