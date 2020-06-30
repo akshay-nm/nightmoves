@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "mocha",
+    "coverage": "nyc yarn test"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
