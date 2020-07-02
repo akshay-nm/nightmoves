@@ -1,4 +1,6 @@
 const router = require('express').Router()
+const debug = require('util').debuglog('components-route')
+
 let components = require('../lib/data').components
 
 // body:info(unique)
@@ -7,7 +9,7 @@ let components = require('../lib/data').components
 // headers: 'Content-Type': 'application/json'
 // return: doc
 router.post('/', (req, res) => {
-  console.log('------COMPONENTS:POST------')
+  debug('------COMPONENTS:POST------')
   let info = req.body.info
   if(info)
     components.find({ info: { name: info.name } }, (err, docs) => {
@@ -20,21 +22,21 @@ router.post('/', (req, res) => {
             if(!error && newDoc) {
               res.json(newDoc)
             } else {
-              console.log('Error trying to add the component:', error)
+              debug('Error trying to add the component:', error)
               res.sendStatus(500)
             }
           })
         } else {
-          console.log('Error trying to add the component: The component already exists.')
+          debug('Error trying to add the component: The component already exists.')
           res.sendStatus(400)
         }
       } else {
-        console.log('Error trying to find the component by info during post:', err)
+        debug('Error trying to find the component by info during post:', err)
         res.sendStatus(500)
       }
     })
   else {
-    console.log('Missing or invalid parameters while creating component.')
+    debug('Missing or invalid parameters while creating component.')
     res.sendStatus(400)
   }
 })
@@ -45,14 +47,14 @@ router.post('/', (req, res) => {
 // headers: 'Content-Type': 'application/json'
 // return: doc
 router.get('/:componentId', (req, res) => {
-  console.log('------COMPONENTS:GET------')
+  debug('------COMPONENTS:GET------')
   if(req.params.componentId.length === 16) {
     components.findOne({ _id: req.params.componentId }, (error, doc) => {
       if(!error) {
         if(doc) res.json(doc)
         else res.sendStatus(404)
       } else {
-        console.log('Error trying to get component by ID: ', error)
+        debug('Error trying to get component by ID: ', error)
         res.sendStatus(500)
       }
     })
@@ -61,7 +63,7 @@ router.get('/:componentId', (req, res) => {
       if(!error && docs) {
         res.json(docs)
       } else {
-        console.log('Error trying to get all components: ', error)
+        debug('Error trying to get all components: ', error)
         res.sendStatus(500)
       }
     })
@@ -76,7 +78,7 @@ router.get('/:componentId', (req, res) => {
 // return: -
 
 router.put('/', (req, res) => {
-  console.log('------COMPONENTS:PUT------')
+  debug('------COMPONENTS:PUT------')
   let _id = typeof req.body._id === 'string' && req.body._id.length === 16 ? req.body._id : false
   let info = req.body.info
 
@@ -85,12 +87,12 @@ router.put('/', (req, res) => {
       if(!error) {
         res.sendStatus(200)
       } else {
-        console.log('Error trying to update component: ', error)
+        debug('Error trying to update component: ', error)
         res.sendStatus(500)
       }
     })
   } else {
-    console.log('Missing or invalid arguments while editing component.')
+    debug('Missing or invalid arguments while editing component.')
     res.sendStatus(400)
   }
   res.sendStatus(200)
@@ -102,17 +104,17 @@ router.put('/', (req, res) => {
 // headers: 'Content-Type': 'application/json'
 // return: -
 router.delete('/:componentId', (req, res) => {
-  console.log('------COMPONENTS:DELETE------')
+  debug('------COMPONENTS:DELETE------')
   if(req.params.componentId === 16) {
     components.remove({ _id }, {}, (error, numRemoved) => {
       if(!error) res.sendStatus(numRemoved? 200: 404)
       else {
-        console.log('Error trying to remove component: ', error)
+        debug('Error trying to remove component: ', error)
         res.sendStatus(500)
       }
     })
   } else {
-    console.log('Missing or invalid params.')
+    debug('Missing or invalid params.')
     res.sendStatus(400)
   }
 })
